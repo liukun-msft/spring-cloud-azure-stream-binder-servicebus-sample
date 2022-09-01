@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import org.slf4j.Logger;
@@ -24,6 +25,12 @@ public class ServiceBusQueueMultiBindersApplication {
 	public Function<Message<String>, Message<String>> function1() {
 		return message -> {
 			LOGGER.info("New message1 received: '{}'", message);
+
+			try {
+				TimeUnit.MINUTES.sleep(6);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			return message;
 		};
 	}

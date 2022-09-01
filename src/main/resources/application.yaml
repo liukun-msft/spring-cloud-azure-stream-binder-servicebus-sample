@@ -2,19 +2,19 @@ spring:
   cloud:
     azure:
       servicebus:
-        connection-string: ${SERVICEBUS_CONNECTION_STRING}
+        connection-string: ${connection-string}
     stream:
       function:
-        definition: function1;function2
+        definition: function1
       bindings:
         function1-in-0:
-          destination: ${SERVICEBUS_QUEUE_1_NAME}
+          destination: longduration # lock duration is 5 minutes, represent for create-replica
         function1-out-0:
-          destination: ${SERVICEBUS_TOPIC_NAME}
+          destination: longduration-topic
         function2-in-0:
-          destination: ${SERVICEBUS_QUEUE_2_NAME}
+          destination: longduration2 # lock duration is 5 minutes, represent for destroy-replica
         function2-out-0:
-          destination: ${SERVICEBUS_TOPIC_NAME}
+          destination: longduration-topic
       servicebus:
         bindings:
           function1-in-0:
