@@ -5,7 +5,7 @@ spring:
         connection-string: ${connection-string}
     stream:
       function:
-        definition: function1
+        definition: function1; function2
       bindings:
         function1-in-0:
           destination: longduration # lock duration is 5 minutes, represent for create-replica
